@@ -27,9 +27,6 @@ public class CountryService {
         @Autowired
         private RestTemplate restTemplate;
 
-        @Autowired
-        private ObjectMapper objectMapper;
-
         public List<Country> getAllCountries() {
                 String url = "https://restcountries.com/v3.1/all";
                 List<Map<String, Object>> response = restTemplate.getForObject(url, List.class);
