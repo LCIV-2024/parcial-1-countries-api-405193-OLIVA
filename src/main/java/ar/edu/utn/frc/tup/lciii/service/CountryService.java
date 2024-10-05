@@ -58,12 +58,21 @@ public class CountryService {
                 return new CountryDTO(country.getCode(), country.getName());
         }
 
-        public List<CountryDTO> getCountriesDTO(){
+        public List<CountryDTO> getCountriesDTO(String code, String name){
                 List<CountryDTO> countryDTOList = new ArrayList<>();
                 List<Country> countryList = this.getAllCountries();
 
-                for (Country country : countryList){
-                        countryDTOList.add(this.mapToDTO(country));
+                if (code != null){
+                        for (Country country : countryList){
+                                if (country.getCode().equals(code))
+                                        countryDTOList.add(this.mapToDTO(country));
+                        }
+                }
+                else if (name != null){
+                        for (Country country : countryList){
+                                if (country.getCode().equals(name))
+                                        countryDTOList.add(this.mapToDTO(country));
+                        }
                 }
                 return countryDTOList;
         }
@@ -112,7 +121,8 @@ public class CountryService {
                 List<CountryDTO> countryDTOList = new ArrayList<>();
                 List<CountryEntity> countriesToSave = new ArrayList<>();
 
-                for (int i = 0; i < amountOfCountryToSave.getAmountOfCountryToSave(); i++) {
+                for (int i = 0; i < amountOfCountryToSave.getAmountOfCountryToSave() &&
+                        i < countryList.size(); i++) {
                         countryDTOList.add(mapToDTO(countryList.get(i)));
                         CountryEntity countryEntity = new CountryEntity();
                         countryEntity.setArea(countryList.get(i).getArea());

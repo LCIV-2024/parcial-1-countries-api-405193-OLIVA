@@ -23,7 +23,7 @@ public class CountryController {
             @RequestParam(required = false) String code,
             @RequestParam(required = false) String name
     ){
-        return ResponseEntity.ok(countryService.getCountriesDTO());
+        return ResponseEntity.ok(countryService.getCountriesDTO(code, name));
     }
 
     @GetMapping("/{continent}/continent")
