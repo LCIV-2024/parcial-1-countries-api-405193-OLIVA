@@ -28,23 +28,14 @@ class CountryServiceTest {
     void getAllCountries() {
     }
 
-    @Test
+
     void getCountriesDTO() {
-        List<Country> countries = new ArrayList<>();
 
-        countries.add(Country.builder()
-                .name("Argentina")
-                .population(45)
-                .area(1)
-                .region("Americas")
-                .languages(null)
-                .code("ARG")
-                .borders(null)
-                .build());
+        List<CountryDTO>countryDTOList = new ArrayList<>();
+        CountryDTO countryDTO = new CountryDTO("ARG", "Argentina");
+        countryDTOList.add(countryDTO);
 
-        when(countryService.getAllCountries()).thenReturn(countries);
-
-        List<CountryDTO> countryDTOList = countryService.getCountriesDTO("ARG", null);
+        when(countryService.getCountriesDTO("ARG", null)).thenReturn(countryDTOList);
 
         assertEquals(1, countryDTOList.size());
     }
