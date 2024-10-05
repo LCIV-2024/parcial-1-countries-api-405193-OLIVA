@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/countries")
+@RequestMapping("/api/countries")
 public class CountryController {
 
     @Autowired

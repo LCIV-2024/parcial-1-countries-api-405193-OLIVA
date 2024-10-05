@@ -71,6 +71,11 @@ public class CountryService {
                                         countryDTOList.add(this.mapToDTO(country));
                         }
                 }
+                else {
+                        for (Country country : countryList){
+                                countryDTOList.add(this.mapToDTO(country));
+                        }
+                }
                 return countryDTOList;
         }
 
